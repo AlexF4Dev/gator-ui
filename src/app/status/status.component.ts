@@ -31,7 +31,7 @@ export class StatusComponent implements OnInit {
     @Inject(LOCAL_STORAGE) private storage: WebStorageService,
     @Inject(SESSION_STORAGE) private sessionStorage: WebStorageService,
   ) {
-    this.bGetFromGit = sessionStorage.get('LBC');
+    this.bGetFromGit = sessionStorage.get('LBC'); //Default is true
     
     this.loginAndSetup();
   }
@@ -64,14 +64,14 @@ export class StatusComponent implements OnInit {
       }
     }, 200); //every 200 ms
 
-    this.gitService
-      .getOrgList(
-        this.bGetFromGit, //Get from Git
-        this.bGetFromGit,
-      )
-      .subscribe(
-        //superflaus call, just waking up the sleeping API
-        res => {
+    // this.gitService
+    //   .getOrgList(
+    //     this.bGetFromGit, //Get from Git
+    //     this.bGetFromGit,
+    //   )
+    //   .subscribe(
+    //     //superflaus call, just waking up the sleeping API
+    //     res => {
           //Get the Tenant details - This will be logged in User
           this.gitService.getGitLoggedInUSerDetails(this.bGetFromGit).subscribe(result => {
             let dd = new DevDetails();
@@ -207,8 +207,8 @@ export class StatusComponent implements OnInit {
               clearTimeout(t);
             },
           );
-        },
-      );
+      //   },
+      // );
   }
   ngOnInit() {}
 

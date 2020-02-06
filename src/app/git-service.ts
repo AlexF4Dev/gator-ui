@@ -570,4 +570,12 @@ export class GitService {
       this.jiraCurrentOrg = org;
     }
   }
+
+  //Admin
+  getAdmins(): Observable<any> {
+    const q = ``;
+    this.attachJiraToken();
+    return this.http.get(this.gitApiUrl, this.httpJirapOptions);
+  }
+
 }
